@@ -39,18 +39,27 @@ function App() {
       <View
         style={{
           flex: 1,
-          backgroundColor: "linen",
+          backgroundColor: "ghostwhite",
           height: "100%",
           width: "100%",
         }}
       >
         <View
           style={{
+            height: "1%",
+            flexDirection: "row",
+            justifyContent: "space-evenly",
+            paddingHorizontal: 36,
+            backgroundColor: "ghostwhite",
+          }}
+        ></View>
+        <View
+          style={{
             height: "7%",
             flexDirection: "row",
             justifyContent: "space-evenly",
             paddingHorizontal: 36,
-            backgroundColor: "thistle",
+            backgroundColor: "ghostwhite",
           }}
         >
           <View
@@ -104,22 +113,25 @@ function App() {
         </View>
         <View
           style={{
-            height: "1.5%",
+            height: "0.5%",
             flexDirection: "row",
             justifyContent: "space-evenly",
             paddingHorizontal: 36,
-            backgroundColor: "tomato",
+            backgroundColor: "ghostwhite",
           }}
         ></View>
+
         <View
           style={{
             height: "6.5%",
             width: "90%",
             marginHorizontal: "5%",
+            borderWidth: 1,
+            borderColor: "gainsboro",
             borderRadius: 36,
             flexDirection: "row",
             justifyContent: "center",
-            backgroundColor: "gainsboro",
+            backgroundColor: "ghostwhite",
           }}
         >
           <TextInput
@@ -136,7 +148,7 @@ function App() {
             flexDirection: "row",
             justifyContent: "space-evenly",
             paddingHorizontal: 36,
-            backgroundColor: "tomato",
+            backgroundColor: "ghostwhite",
           }}
         ></View>
         <ScrollView style={{ height: "83.5%", backgroundColor: "grey" }}>
