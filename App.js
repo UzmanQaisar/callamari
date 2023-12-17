@@ -46,13 +46,14 @@ function App() {
       >
         <View
           style={{
-            height: "1%",
+            height: "5%",
             flexDirection: "row",
             justifyContent: "space-evenly",
             paddingHorizontal: 36,
             backgroundColor: "ghostwhite",
           }}
         ></View>
+
         <View
           style={{
             height: "7%",
@@ -111,21 +112,12 @@ function App() {
             </TouchableOpacity>
           </View>
         </View>
-        <View
-          style={{
-            height: "0.5%",
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-            paddingHorizontal: 36,
-            backgroundColor: "ghostwhite",
-          }}
-        ></View>
 
         <View
           style={{
-            height: "6.5%",
-            width: "90%",
-            marginHorizontal: "5%",
+            height: "6%",
+            width: "80%",
+            marginHorizontal: "10%",
             borderWidth: 1,
             borderColor: "gainsboro",
             borderRadius: 36,
@@ -142,16 +134,18 @@ function App() {
             placeholder={`🔍  ${totalContacts} contacts`}
           ></TextInput>
         </View>
+        
         <View
           style={{
-            height: "1.5%",
+            height: "1%",
             flexDirection: "row",
             justifyContent: "space-evenly",
             paddingHorizontal: 36,
             backgroundColor: "ghostwhite",
           }}
         ></View>
-        <ScrollView style={{ height: "83.5%", backgroundColor: "grey" }}>
+
+        <ScrollView style={{ height: "80%", backgroundColor: "grey" }}>
           {recentList.map((item, index) => (
             <View
               key={index}
