@@ -1,6 +1,6 @@
+import React, { useState } from "react";
 import {
   ScrollView,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -14,19 +14,32 @@ function App() {
     { name: "Ghostbusters", number: "9876543210" },
     { name: "A Friend", number: "1800 69 420" },
     { name: "Your Bluff Mr. Bond", number: "AAA6687654" },
-    { name: "Ghostbusters", number: "9876543210" },
-    { name: "A Friend", number: "1800 69 420" },
-    { name: "Your Bluff Mr. Bond", number: "AAA6687654" },
-    { name: "Ghostbusters", number: "9876543210" },
-    { name: "A Friend", number: "1800 69 420" },
-    { name: "Your Bluff Mr. Bond", number: "AAA6687654" },
-    { name: "Ghostbusters", number: "9876543210" },
-    { name: "A Friend", number: "1800 69 420" },
-    { name: "Your Bluff Mr. Bond", number: "AAA6687654" },
+    { name: "John", number: "5644858875" },
+    { name: "John Wick", number: "9685475241" },
+    { name: "Yours Gods?", number: "6594226587" },
+    { name: "Nein Wan Wan", number: "9635214001" },
+    { name: "A Friend ... of a Friend", number: "9876598565" },
+    { name: "A Vacuum Machine Seller", number: "18005649988" },
+    { name: "Ma Look", number: "1800659989" },
+    { name: "It Even", number: "657894558785" },
+    { name: "In The Marines", number: "356365615236446583" },
   ];
+  const [previousCallList, setPreviousCallList] = useState(recentList);
   function handleCallMenuPress() {}
   function handleContactsMenuPress() {}
   function handleLeadsMenuPress() {}
+  function handleSearchCallList(searchTerm) {
+    if (searchTerm == "") {
+      setPreviousCallList(recentList);
+    } else {
+      const filteredPreviousCallList = previousCallList.filter(
+        (item) =>
+          item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          item.number.includes(searchTerm)
+      );
+      setPreviousCallList(filteredPreviousCallList);
+    }
+  }
   return (
     <View
       style={{
@@ -108,6 +121,7 @@ function App() {
                 type="font-awesome-5"
                 size={24}
                 color="green"
+                solid
               />
             </TouchableOpacity>
           </View>
@@ -132,9 +146,10 @@ function App() {
               width: "80%",
             }}
             placeholder={`🔍  ${totalContacts} contacts`}
+            onChangeText={handleSearchCallList}
           ></TextInput>
         </View>
-        
+
         <View
           style={{
             height: "1%",
@@ -146,17 +161,28 @@ function App() {
         ></View>
 
         <ScrollView style={{ height: "80%", backgroundColor: "grey" }}>
-          {recentList.map((item, index) => (
+          {previousCallList.map((item, index) => (
             <View
               key={index}
               style={{
                 padding: 20,
-                backgroundColor: "lightgray",
-                borderWidth: 1,
-                height: "11.5%",
+                backgroundColor: "ghostwhite",
               }}
             >
-              <Text>{item.name} </Text>
+              <Text
+                style={{
+                  fontSize: 16,
+                }}
+              >
+                {item.name}{" "}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                }}
+              >
+                {item.number}{" "}
+              </Text>
             </View>
           ))}
         </ScrollView>
