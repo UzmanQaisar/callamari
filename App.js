@@ -145,7 +145,7 @@ function App() {
               fontSize: 20,
               width: "80%",
             }}
-            placeholder={`🔍  ${totalContacts} contacts`}
+            placeholder={`🔍  ${totalContacts} contacts ilyAppi`}
             onChangeText={handleSearchCallList}
           ></TextInput>
         </View>
@@ -167,22 +167,35 @@ function App() {
               style={{
                 padding: 20,
                 backgroundColor: "ghostwhite",
+                flexDirection: "row",
               }}
             >
-              <Text
-                style={{
-                  fontSize: 16,
-                }}
-              >
-                {item.name}{" "}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 12,
-                }}
-              >
-                {item.number}{" "}
-              </Text>
+              <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
+                <TouchableOpacity>
+                  <Icon
+                    name="user"
+                    type="font-awesome-5"
+                    size={24}
+                    color="forestgreen"
+                    solid
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={{ flex: 8, paddingLeft: 6 }}>
+                <Text style={{ fontSize: 16 }}>{item.name} </Text>
+                <Text style={{ fontSize: 12 }}>{item.number} </Text>
+              </View>
+              <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
+                <TouchableOpacity>
+                  <Icon
+                    name="chevron-right"
+                    type="font-awesome-5"
+                    size={20}
+                    color="grey"
+                    solid
+                  />
+                </TouchableOpacity>
+              </View>
             </View>
           ))}
         </ScrollView>
