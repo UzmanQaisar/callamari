@@ -7,10 +7,7 @@ import {
   View,
 } from "react-native";
 import { Button, Icon } from "react-native-elements";
-
-function App() {
-  const totalContacts = 420;
-  const recentList = [
+const recentList = [
     { name: "Ghostbusters", number: "9876543210" },
     { name: "A Friend", number: "1800 69 420" },
     { name: "Your Bluff Mr. Bond", number: "AAA6687654" },
@@ -24,6 +21,19 @@ function App() {
     { name: "It Even", number: "657894558785" },
     { name: "In The Marines", number: "356365615236446583" },
   ];
+
+const contactsList = [
+  {name: "Alpha", number: "1236547890"},
+  {name: "Beta", number: "6977890"},
+  {name: "Gamma", number: "57575757347890"},
+  {name: "Delta", number: "17890"},
+  {name: "Ci", number: "12365790"},
+  {name: "Epsilon", number: "1577890"},
+  {name: "Sigma", number: "576547890"},
+  {name: "Ligma", number: "277890"},
+]
+function App() {
+  
   const [previousCallList, setPreviousCallList] = useState(recentList);
   function handleCallMenuPress() {}
   function handleContactsMenuPress() {}
@@ -143,9 +153,9 @@ function App() {
           <TextInput
             style={{
               fontSize: 20,
-              width: "80%",
+              width: "86%",
             }}
-            placeholder={`🔍  ${totalContacts} contacts ilyAppi`}
+            placeholder={`🔍  ${recentList.length} contacts`}
             onChangeText={handleSearchCallList}
           ></TextInput>
         </View>
@@ -183,7 +193,7 @@ function App() {
               </View>
               <View style={{ flex: 8, paddingLeft: 6 }}>
                 <Text style={{ fontSize: 16 }}>{item.name} </Text>
-                <Text style={{ fontSize: 12 }}>{item.number} </Text>
+                <Text style={{ fontSize: 12, color: "dimgrey" }}>{item.number} </Text>
               </View>
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
                 <TouchableOpacity>
