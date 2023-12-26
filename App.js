@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { Button, Icon } from "react-native-elements";
+import { Icon } from "@rneui/themed";
 const recentList = [
     { name: "Ghostbusters", number: "9876543210" },
     { name: "A Friend", number: "1800 69 420" },
@@ -48,9 +48,11 @@ function App() {
   
   const [previousCallList, setPreviousCallList] = useState(recentList);
   const [currentMenu, setCurrentMenu] = useState("RECENT");
-  function handleCallMenuPress() {setCurrentMenu("RECENT")}
-  function handleContactsMenuPress() {setCurrentMenu("CONTACTS")}
-  function handleLeadsMenuPress() {setCurrentMenu("LEADS")}
+
+  function handleCallMenuPress() {setCurrentMenu("RECENT")};
+  function handleContactsMenuPress() {setCurrentMenu("CONTACTS")};
+  function handleLeadsMenuPress() {setCurrentMenu("LEADS")};
+
   function handleSearchCallList(searchTerm) {
     if (searchTerm == "") {
       setPreviousCallList(recentList);
@@ -62,7 +64,8 @@ function App() {
       );
       setPreviousCallList(filteredPreviousCallList);
     }
-  }
+  };
+  
   return (
     <View
       style={{
@@ -302,6 +305,53 @@ function App() {
             </View>
           ))}
         </ScrollView>}
+
+        <View style={{ 
+          position: "absolute", 
+          bottom: "8%", 
+          right: "8%",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "ghostwhite",
+          borderWidth: 2,
+          borderColor: "blue",
+          borderRadius: 48, 
+          height: 48, 
+          width: 48 }}
+        >
+          <TouchableOpacity>
+            <Icon 
+              name="dialpad"
+              type="Entypo"
+              size={28}
+              color="blue"
+            />
+          </TouchableOpacity>
+        </View>
+
+        <View style={{ 
+          position: "absolute", 
+          bottom: "8%", 
+          right: "24%",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "ghostwhite",
+          borderWidth: 2,
+          borderColor: "blue",
+          borderRadius: 48, 
+          height: 48, 
+          width: 48 }}
+        >
+          <TouchableOpacity>
+            <Icon 
+              name="phone-forwarded"
+              type="MaeterialIcons"
+              size={28}
+              color="blue"
+            />
+          </TouchableOpacity>
+        </View>
+
       </View>
     </View>
   );
