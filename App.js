@@ -32,12 +32,25 @@ const contactsList = [
   {name: "Sigma", number: "576547890"},
   {name: "Ligma", number: "277890"},
 ]
+
+const leadsList = [
+  {name: "Any leads, boss?", number: "1236547890"},
+  {name: "Nope", number: "6977890"},
+  {name: "Son of a gun got away", number: "57575757347890"},
+  {name: "Third time this month", number: "17890"},
+  {name: "Sir, the mayor is here...", number: "12365790"},
+  {name: "He is done. Or I am.", number: "1577890"},
+  {name: "Mr. Mayor, Sir. There has b", number: "1577890"},
+  {name: "Find him. Finish him. Blanket Immunity. Just get it done, McKlowski.", number: "1577890"},
+]
+
 function App() {
   
   const [previousCallList, setPreviousCallList] = useState(recentList);
-  function handleCallMenuPress() {}
-  function handleContactsMenuPress() {}
-  function handleLeadsMenuPress() {}
+  const [currentMenu, setCurrentMenu] = useState("RECENT");
+  function handleCallMenuPress() {setCurrentMenu("RECENT")}
+  function handleContactsMenuPress() {setCurrentMenu("CONTACTS")}
+  function handleLeadsMenuPress() {setCurrentMenu("LEADS")}
   function handleSearchCallList(searchTerm) {
     if (searchTerm == "") {
       setPreviousCallList(recentList);
@@ -170,7 +183,7 @@ function App() {
           }}
         ></View>
 
-        <ScrollView style={{ height: "80%", backgroundColor: "grey" }}>
+        {currentMenu == "RECENT" && <ScrollView style={{ height: "80%", backgroundColor: "ghostwhite" }}>
           {previousCallList.map((item, index) => (
             <View
               key={index}
@@ -186,7 +199,7 @@ function App() {
                     name="user"
                     type="font-awesome-5"
                     size={24}
-                    color="forestgreen"
+                    color="blue"
                     solid
                   />
                 </TouchableOpacity>
@@ -208,7 +221,87 @@ function App() {
               </View>
             </View>
           ))}
-        </ScrollView>
+        </ScrollView>}
+
+        {currentMenu == "CONTACTS" && <ScrollView style={{ height: "80%", backgroundColor: "ghostwhite" }}>
+          {contactsList.map((item, index) => (
+            <View
+              key={index}
+              style={{
+                padding: 20,
+                backgroundColor: "ghostwhite",
+                flexDirection: "row",
+              }}
+            >
+              <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
+                <TouchableOpacity>
+                  <Icon
+                    name="person"
+                    type="fontisto"
+                    size={24}
+                    color="orangered"
+                    solid
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={{ flex: 8, paddingLeft: 6 }}>
+                <Text style={{ fontSize: 16 }}>{item.name} </Text>
+                <Text style={{ fontSize: 12, color: "dimgrey" }}>{item.number} </Text>
+              </View>
+              <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
+                <TouchableOpacity>
+                  <Icon
+                    name="chevron-right"
+                    type="font-awesome-5"
+                    size={20}
+                    color="dimgrey"
+                    solid
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+          ))}
+        </ScrollView>}
+
+        {currentMenu == "LEADS" && <ScrollView style={{ height: "80%", backgroundColor: "ghostwhite" }}>
+          {leadsList.map((item, index) => (
+            <View
+              key={index}
+              style={{
+                padding: 20,
+                backgroundColor: "ghostwhite",
+                flexDirection: "row",
+              }}
+            >
+              <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
+                <TouchableOpacity>
+                  <Icon
+                    name="thumbs-up"
+                    type="entypo"
+                    size={24}
+                    color="green"
+                    solid
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={{ flex: 8, paddingLeft: 6 }}>
+                <Text style={{ fontSize: 16 }}>{item.name} </Text>
+                <Text style={{ fontSize: 12, color: "dimgrey" }}>{item.number} </Text>
+              </View>
+              <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
+                <TouchableOpacity>
+                  <Icon
+                    name="chevron-right"
+                    type="font-awesome-5"
+                    size={20}
+                    color="dimgrey"
+                    solid
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+          ))}
+        </ScrollView>}
       </View>
     </View>
   );
