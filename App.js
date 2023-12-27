@@ -176,18 +176,8 @@ function App() {
             onChangeText={handleSearchCallList}
           ></TextInput>
         </View>
-
-        <View
-          style={{
-            height: "1%",
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-            paddingHorizontal: 36,
-            backgroundColor: "ghostwhite",
-          }}
-        ></View>
-
-        {currentMenu == "RECENT" && <ScrollView style={{ height: "80%", backgroundColor: "ghostwhite" }}>
+        
+        {currentMenu == "RECENT" && <ScrollView style={{ height: "81%", backgroundColor: "ghostwhite" }}>
           {previousCallList.map((item, index) => (
             <View
               key={index}
@@ -227,7 +217,7 @@ function App() {
           ))}
         </ScrollView>}
 
-        {currentMenu == "CONTACTS" && <ScrollView style={{ height: "80%", backgroundColor: "ghostwhite" }}>
+        {currentMenu == "CONTACTS" && <ScrollView style={{ height: "81%", backgroundColor: "ghostwhite" }}>
           {contactsList.map((item, index) => (
             <View
               key={index}
@@ -267,7 +257,7 @@ function App() {
           ))}
         </ScrollView>}
 
-        {currentMenu == "LEADS" && <ScrollView style={{ height: "80%", backgroundColor: "ghostwhite" }}>
+        {currentMenu == "LEADS" && <ScrollView style={{ height: "81%", backgroundColor: "ghostwhite" }}>
           {leadsList.map((item, index) => (
             <View
               key={index}
@@ -309,8 +299,8 @@ function App() {
 
         <View style={{ 
           position: "absolute", 
-          bottom: "4%", 
-          right: "8%",
+          bottom: "1%", 
+          right: "6%",
           alignItems: "center",
           justifyContent: "center",
           zIndex: 30,
@@ -318,8 +308,8 @@ function App() {
           borderWidth: 2,
           borderColor: "blue",
           borderRadius: 48, 
-          height: 48, 
-          width: 48 }}
+          height: 52, 
+          width: 52 }}
         >
           <TouchableOpacity>
             <Icon 
@@ -333,8 +323,8 @@ function App() {
 
         <View style={{ 
           position: "absolute", 
-          bottom: "4%", 
-          right: "24%",
+          bottom: "1%", 
+          right: "22%",
           alignItems: "center",
           justifyContent: "center",
           zIndex: 30,
@@ -342,8 +332,8 @@ function App() {
           borderWidth: 2,
           borderColor: "blue",
           borderRadius: 48, 
-          height: 48, 
-          width: 48 }}
+          height: 52, 
+          width: 52 }}
         >
           <TouchableOpacity onPress={() => setDialPad(!dialPad)}>
             <Icon 
@@ -361,15 +351,50 @@ function App() {
           right: "4%",
           zIndex: 20,
           flexDirection: "column",
-          backgroundColor: "salmon",
-          height: "48%", 
+          backgroundColor: "gainsboro",
+          borderRadius: 20,
+          overflow: "hidden",
+          height: "54%", 
           width: "92%" }}
         >
-          <View style={{width: "100%", height: "20%", backgroundColor: "cyan"}}></View>
-          <View style={{width: "100%", height: "20%", backgroundColor: "magenta"}}></View>
-          <View style={{width: "100%", height: "20%", backgroundColor: "teal"}}></View>
-          <View style={{width: "100%", height: "20%", backgroundColor: "yellow"}}></View>
-          <View style={{width: "100%", height: "20%", backgroundColor: "indigo"}}></View>
+          <View style={{width: "100%", height: "14%", flexDirection: "row", justifyContent: "center", alignItems: "center", backgroundColor: "silver" }}>
+            <Text style={{fontSize: 30, fontFamily: "sans-serif", letterSpacing: 1}}>+91 9955496821</Text>
+          </View>
+          <View style={{width: "100%", height: "17%", flexDirection: "row", justifyContent: "center" }}>
+            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>1</Text></View>
+            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>2</Text></View>
+            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>3</Text></View>
+          </View>
+          <View style={{width: "100%", height: "17%", flexDirection: "row", justifyContent: "center" }}>
+            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>4</Text></View>
+            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>5</Text></View>
+            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>6</Text></View>
+          </View>
+          <View style={{width: "100%", height: "17%", flexDirection: "row", justifyContent: "center" }}>
+            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>7</Text></View>
+            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>8</Text></View>
+            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>9</Text></View>
+          </View>
+          <View style={{width: "100%", height: "17%", flexDirection: "row", justifyContent: "center" }}>
+            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>*</Text></View>
+            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>0</Text></View>
+            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>#</Text></View>
+          </View>
+          <View style={{width: "100%", height: "18%", flexDirection: "row", justifyContent: "center" }}>
+            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text>***</Text></View>
+            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}>
+              <TouchableOpacity>
+                <Icon 
+                  name="phone"
+                  type="MaterialIcons"
+                  size={28}
+                  color="green"
+                  reverse
+                />
+              </TouchableOpacity>
+            </View>
+            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}></View>
+          </View>
         </View>}
 
       </View>
