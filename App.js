@@ -48,6 +48,7 @@ function App() {
   
   const [previousCallList, setPreviousCallList] = useState(recentList);
   const [currentMenu, setCurrentMenu] = useState("RECENT");
+  const [dialPad, setDialPad] = useState(false);
 
   function handleCallMenuPress() {setCurrentMenu("RECENT")};
   function handleContactsMenuPress() {setCurrentMenu("CONTACTS")};
@@ -308,33 +309,11 @@ function App() {
 
         <View style={{ 
           position: "absolute", 
-          bottom: "8%", 
+          bottom: "4%", 
           right: "8%",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "ghostwhite",
-          borderWidth: 2,
-          borderColor: "blue",
-          borderRadius: 48, 
-          height: 48, 
-          width: 48 }}
-        >
-          <TouchableOpacity>
-            <Icon 
-              name="dialpad"
-              type="Entypo"
-              size={28}
-              color="blue"
-            />
-          </TouchableOpacity>
-        </View>
-
-        <View style={{ 
-          position: "absolute", 
-          bottom: "8%", 
-          right: "24%",
-          alignItems: "center",
-          justifyContent: "center",
+          zIndex: 30,
           backgroundColor: "ghostwhite",
           borderWidth: 2,
           borderColor: "blue",
@@ -345,12 +324,53 @@ function App() {
           <TouchableOpacity>
             <Icon 
               name="phone-forwarded"
-              type="MaeterialIcons"
+              type="MaterialIcons"
               size={28}
               color="blue"
             />
           </TouchableOpacity>
         </View>
+
+        <View style={{ 
+          position: "absolute", 
+          bottom: "4%", 
+          right: "24%",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 30,
+          backgroundColor: "ghostwhite",
+          borderWidth: 2,
+          borderColor: "blue",
+          borderRadius: 48, 
+          height: 48, 
+          width: 48 }}
+        >
+          <TouchableOpacity onPress={() => setDialPad(!dialPad)}>
+            <Icon 
+              name="dialpad"
+              type="Entypo"
+              size={28}
+              color="blue"
+            />
+          </TouchableOpacity>
+        </View>
+
+        {dialPad && <View style={{ 
+          position: "absolute", 
+          bottom: "0%", 
+          right: "4%",
+          zIndex: 20,
+          flexDirection: "column",
+          backgroundColor: "salmon",
+          height: "48%", 
+          width: "92%" }}
+        >
+          <View style={{width: "100%", height: "20%", backgroundColor: "cyan"}}></View>
+          <View style={{width: "100%", height: "20%", backgroundColor: "magenta"}}></View>
+          <View style={{width: "100%", height: "20%", backgroundColor: "teal"}}></View>
+          <View style={{width: "100%", height: "20%", backgroundColor: "yellow"}}></View>
+          <View style={{width: "100%", height: "20%", backgroundColor: "indigo"}}></View>
+        </View>}
 
       </View>
     </View>
