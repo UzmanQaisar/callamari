@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  StyleSheet
 } from "react-native";
 import { Icon } from "@rneui/themed";
 const recentList = [
@@ -297,19 +298,7 @@ function App() {
           ))}
         </ScrollView>}
 
-        <View style={{ 
-          position: "absolute", 
-          bottom: "1%", 
-          right: "6%",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 30,
-          backgroundColor: "ghostwhite",
-          borderWidth: 2,
-          borderColor: "blue",
-          borderRadius: 48, 
-          height: 52, 
-          width: 52 }}
+        <View style={[xxx.tacButtons, {right: "6%"}]}
         >
           <TouchableOpacity>
             <Icon 
@@ -321,19 +310,7 @@ function App() {
           </TouchableOpacity>
         </View>
 
-        <View style={{ 
-          position: "absolute", 
-          bottom: "1%", 
-          right: "22%",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 30,
-          backgroundColor: "ghostwhite",
-          borderWidth: 2,
-          borderColor: "blue",
-          borderRadius: 48, 
-          height: 52, 
-          width: 52 }}
+        <View style={[xxx.tacButtons, {right: "22%"}]}
         >
           <TouchableOpacity onPress={() => setDialPad(!dialPad)}>
             <Icon 
@@ -361,28 +338,28 @@ function App() {
             <Text style={{fontSize: 30, fontFamily: "sans-serif", letterSpacing: 1}}>+91 9955496821</Text>
           </View>
           <View style={{width: "100%", height: "17%", flexDirection: "row", justifyContent: "center" }}>
-            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>1</Text></View>
-            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>2</Text></View>
-            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>3</Text></View>
+            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>1</Text></View>
+            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>2</Text></View>
+            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>3</Text></View>
           </View>
           <View style={{width: "100%", height: "17%", flexDirection: "row", justifyContent: "center" }}>
-            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>4</Text></View>
-            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>5</Text></View>
-            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>6</Text></View>
+            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>4</Text></View>
+            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>5</Text></View>
+            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>6</Text></View>
           </View>
           <View style={{width: "100%", height: "17%", flexDirection: "row", justifyContent: "center" }}>
-            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>7</Text></View>
-            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>8</Text></View>
-            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>9</Text></View>
+            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>7</Text></View>
+            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>8</Text></View>
+            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>9</Text></View>
           </View>
           <View style={{width: "100%", height: "17%", flexDirection: "row", justifyContent: "center" }}>
-            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>*</Text></View>
-            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>0</Text></View>
-            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text style={{fontSize: 28}}>#</Text></View>
+            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>*</Text></View>
+            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>0</Text></View>
+            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>#</Text></View>
           </View>
           <View style={{width: "100%", height: "18%", flexDirection: "row", justifyContent: "center" }}>
-            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}><Text>***</Text></View>
-            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}>
+            <View style={xxx.keypadButton}><Text>***</Text></View>
+            <View style={xxx.keypadButton}>
               <TouchableOpacity>
                 <Icon 
                   name="phone"
@@ -393,7 +370,7 @@ function App() {
                 />
               </TouchableOpacity>
             </View>
-            <View style={{width: "32%", alignItems: "center", justifyContent: "center"}}></View>
+            <View style={xxx.keypadButton}></View>
           </View>
         </View>}
 
@@ -401,5 +378,29 @@ function App() {
     </View>
   );
 }
+
+
+const xxx = StyleSheet.create({
+  keypadButton: {
+    width: "32%", alignItems: "center", justifyContent: "center"
+  },
+  tacButtons: {    
+    position: "absolute", 
+    bottom: "1%",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 30,
+    backgroundColor: "ghostwhite",
+    borderWidth: 2,
+    borderColor: "blue",
+    borderRadius: 48, 
+    height: 52, 
+    width: 52
+  }
+})
+
+
+
+
 
 export default App;
