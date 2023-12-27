@@ -383,8 +383,8 @@ const xxx = StyleSheet.create({
   },
   dialPadStyle: {    
     position: "absolute", 
-    bottom: "7%", 
-    right: "4%",
+    bottom: "8%", 
+    right: "5%",
     zIndex: 20,
     flexDirection: "column",
     backgroundColor: "ghostwhite",
@@ -393,7 +393,7 @@ const xxx = StyleSheet.create({
     borderColor: "#702670",
     overflow: "hidden",
     height: "54%", 
-    width: "92%"
+    width: "90%"
   },
   dialPadRowStyle: {
     width: "100%",
