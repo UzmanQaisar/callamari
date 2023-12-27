@@ -95,19 +95,7 @@ function App() {
           }}
         ></View>        
 
-        <View
-          style={{
-            height: "6%",
-            width: "80%",
-            marginHorizontal: "10%",
-            borderWidth: 1,
-            borderColor: "gainsboro",
-            borderRadius: 36,
-            flexDirection: "row",
-            justifyContent: "center",
-            backgroundColor: "ghostwhite",
-          }}
-        >
+        <View style={xxx.searchBarParent} >
           <TextInput
             style={{
               fontSize: 20,
@@ -251,23 +239,7 @@ function App() {
                 name="call"
                 type="Ionicons"
                 size={24}
-                color="#020403"
-              />
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              width: "30%",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <TouchableOpacity onPress={handleContactsMenuPress}>
-              <Icon
-                name="persons"
-                type="fontisto"
-                size={24}
-                color="#020403"
+                color="#702670"
               />
             </TouchableOpacity>
           </View>
@@ -283,14 +255,30 @@ function App() {
                 name="handshake"
                 type="font-awesome-5"
                 size={24}
-                color="#020403"
+                color="#702670"
                 solid
               />
             </TouchableOpacity>
           </View>
+          <View
+            style={{
+              width: "30%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <TouchableOpacity onPress={handleContactsMenuPress}>
+              <Icon
+                name="persons"
+                type="fontisto"
+                size={24}
+                color="#702670"
+              />
+            </TouchableOpacity>
+          </View>          
         </View>
 
-        <View style={[xxx.tacButtons, {right: "6%"}]}
+        {!dialPad && <View style={[xxx.tacButtons, {right: "6%"}]}
         >
           <TouchableOpacity>
             <Icon 
@@ -300,9 +288,9 @@ function App() {
               color="#702670"
             />
           </TouchableOpacity>
-        </View>
+        </View>}
 
-        <View style={[xxx.tacButtons, {right: "22%"}]}
+        {!dialPad && <View style={[xxx.tacButtons, {right: "22%"}]}
         >
           <TouchableOpacity onPress={() => setDialPad(!dialPad)}>
             <Icon 
@@ -312,10 +300,10 @@ function App() {
               color="#702670"
             />
           </TouchableOpacity>
-        </View>
+        </View>}
 
         {dialPad && <View style={xxx.dialPadStyle} >
-          <View style={[xxx.dialPadRowStyle, {height: "14%", backgroundColor: "silver"}]}>
+          <View style={[xxx.dialPadRowStyle, {height: "14%", backgroundColor: "#cfc5ce"}]}>
             <Text style={{fontSize: 30, fontFamily: "sans-serif", letterSpacing: 1}}>+91 9955496821</Text>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
@@ -339,7 +327,7 @@ function App() {
             <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>#</Text></View>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "18%"}]}>
-            <View style={xxx.keypadButton}><Text>***</Text></View>
+            <View style={xxx.keypadButton}></View>
             <View style={xxx.keypadButton}>
               <TouchableOpacity>
                 <Icon 
@@ -351,7 +339,17 @@ function App() {
                 />
               </TouchableOpacity>
             </View>
-            <View style={xxx.keypadButton}></View>
+            <View style={xxx.keypadButton}>
+              <TouchableOpacity onPress={() => setDialPad(!dialPad)}>
+                <Icon
+                  name="chevron-down"
+                  type="font-awesome-5"
+                  size={36}
+                  color="grey"
+                  solid
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>}
 
@@ -382,12 +380,14 @@ const xxx = StyleSheet.create({
   },
   dialPadStyle: {    
     position: "absolute", 
-    bottom: "0%", 
+    bottom: "7%", 
     right: "4%",
     zIndex: 20,
     flexDirection: "column",
-    backgroundColor: "gainsboro",
+    backgroundColor: "ghostwhite",
     borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#702670",
     overflow: "hidden",
     height: "54%", 
     width: "92%"
@@ -400,9 +400,27 @@ const xxx = StyleSheet.create({
   },
   menuStyle: {    
     height: "7%",
+    width: "90%",
+    marginHorizontal: "5%",
+    paddingHorizontal: 36,
     flexDirection: "row",
     justifyContent: "space-evenly",
-    paddingHorizontal: 36,
+    backgroundColor: "ghostwhite",
+    borderWidth: 1,
+    borderBottomWidth: 0,
+    borderColor: "#702670",
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+  },
+  searchBarParent: {    
+    height: "6%",
+    width: "80%",
+    marginHorizontal: "10%",
+    borderWidth: 1,
+    borderColor: "#702670",
+    borderRadius: 36,
+    flexDirection: "row",
+    justifyContent: "center",
     backgroundColor: "ghostwhite",
   }
 })
