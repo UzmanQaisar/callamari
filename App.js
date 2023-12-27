@@ -93,67 +93,7 @@ function App() {
             paddingHorizontal: 36,
             backgroundColor: "ghostwhite",
           }}
-        ></View>
-
-        <View
-          style={{
-            height: "7%",
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-            paddingHorizontal: 36,
-            backgroundColor: "ghostwhite",
-          }}
-        >
-          <View
-            style={{
-              width: "30%",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <TouchableOpacity onPress={handleCallMenuPress}>
-              <Icon
-                name="call"
-                type="Ionicons"
-                size={24}
-                color="blue"
-              />
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              width: "30%",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <TouchableOpacity onPress={handleContactsMenuPress}>
-              <Icon
-                name="persons"
-                type="fontisto"
-                size={24}
-                color="orangered"
-              />
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              width: "30%",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <TouchableOpacity onPress={handleLeadsMenuPress}>
-              <Icon
-                name="handshake"
-                type="font-awesome-5"
-                size={24}
-                color="green"
-                solid
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
+        ></View>        
 
         <View
           style={{
@@ -191,10 +131,10 @@ function App() {
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
                 <TouchableOpacity>
                   <Icon
-                    name="user"
-                    type="font-awesome-5"
-                    size={24}
-                    color="blue"
+                    name="person-outline"
+                    type="Ionicons"
+                    size={32}
+                    color="#020403"
                     solid
                   />
                 </TouchableOpacity>
@@ -232,9 +172,9 @@ function App() {
                 <TouchableOpacity>
                   <Icon
                     name="person"
-                    type="fontisto"
-                    size={24}
-                    color="orangered"
+                    type="Ionicons"
+                    size={32}
+                    color="#020403"
                     solid
                   />
                 </TouchableOpacity>
@@ -273,8 +213,8 @@ function App() {
                   <Icon
                     name="thumbs-up"
                     type="entypo"
-                    size={24}
-                    color="green"
+                    size={28}
+                    color="#020403"
                     solid
                   />
                 </TouchableOpacity>
@@ -298,6 +238,58 @@ function App() {
           ))}
         </ScrollView>}
 
+        <View style={xxx.menuStyle} >
+          <View
+            style={{
+              width: "30%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <TouchableOpacity onPress={handleCallMenuPress}>
+              <Icon
+                name="call"
+                type="Ionicons"
+                size={24}
+                color="#020403"
+              />
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              width: "30%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <TouchableOpacity onPress={handleContactsMenuPress}>
+              <Icon
+                name="persons"
+                type="fontisto"
+                size={24}
+                color="#020403"
+              />
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              width: "30%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <TouchableOpacity onPress={handleLeadsMenuPress}>
+              <Icon
+                name="handshake"
+                type="font-awesome-5"
+                size={24}
+                color="#020403"
+                solid
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+
         <View style={[xxx.tacButtons, {right: "6%"}]}
         >
           <TouchableOpacity>
@@ -305,7 +297,7 @@ function App() {
               name="phone-forwarded"
               type="MaterialIcons"
               size={28}
-              color="blue"
+              color="#702670"
             />
           </TouchableOpacity>
         </View>
@@ -317,47 +309,36 @@ function App() {
               name="dialpad"
               type="Entypo"
               size={28}
-              color="blue"
+              color="#702670"
             />
           </TouchableOpacity>
         </View>
 
-        {dialPad && <View style={{ 
-          position: "absolute", 
-          bottom: "0%", 
-          right: "4%",
-          zIndex: 20,
-          flexDirection: "column",
-          backgroundColor: "gainsboro",
-          borderRadius: 20,
-          overflow: "hidden",
-          height: "54%", 
-          width: "92%" }}
-        >
-          <View style={{width: "100%", height: "14%", flexDirection: "row", justifyContent: "center", alignItems: "center", backgroundColor: "silver" }}>
+        {dialPad && <View style={xxx.dialPadStyle} >
+          <View style={[xxx.dialPadRowStyle, {height: "14%", backgroundColor: "silver"}]}>
             <Text style={{fontSize: 30, fontFamily: "sans-serif", letterSpacing: 1}}>+91 9955496821</Text>
           </View>
-          <View style={{width: "100%", height: "17%", flexDirection: "row", justifyContent: "center" }}>
+          <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
             <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>1</Text></View>
             <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>2</Text></View>
             <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>3</Text></View>
           </View>
-          <View style={{width: "100%", height: "17%", flexDirection: "row", justifyContent: "center" }}>
+          <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
             <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>4</Text></View>
             <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>5</Text></View>
             <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>6</Text></View>
           </View>
-          <View style={{width: "100%", height: "17%", flexDirection: "row", justifyContent: "center" }}>
+          <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
             <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>7</Text></View>
             <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>8</Text></View>
             <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>9</Text></View>
           </View>
-          <View style={{width: "100%", height: "17%", flexDirection: "row", justifyContent: "center" }}>
+          <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
             <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>*</Text></View>
             <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>0</Text></View>
             <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>#</Text></View>
           </View>
-          <View style={{width: "100%", height: "18%", flexDirection: "row", justifyContent: "center" }}>
+          <View style={[xxx.dialPadRowStyle, {height: "18%"}]}>
             <View style={xxx.keypadButton}><Text>***</Text></View>
             <View style={xxx.keypadButton}>
               <TouchableOpacity>
@@ -382,20 +363,47 @@ function App() {
 
 const xxx = StyleSheet.create({
   keypadButton: {
-    width: "32%", alignItems: "center", justifyContent: "center"
+    width: "32%", 
+    alignItems: "center", 
+    justifyContent: "center"
   },
   tacButtons: {    
     position: "absolute", 
-    bottom: "1%",
+    bottom: "8%",
     alignItems: "center",
     justifyContent: "center",
     zIndex: 30,
     backgroundColor: "ghostwhite",
     borderWidth: 2,
-    borderColor: "blue",
+    borderColor: "#702670",
     borderRadius: 48, 
     height: 52, 
     width: 52
+  },
+  dialPadStyle: {    
+    position: "absolute", 
+    bottom: "0%", 
+    right: "4%",
+    zIndex: 20,
+    flexDirection: "column",
+    backgroundColor: "gainsboro",
+    borderRadius: 20,
+    overflow: "hidden",
+    height: "54%", 
+    width: "92%"
+  },
+  dialPadRowStyle: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  menuStyle: {    
+    height: "7%",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    paddingHorizontal: 36,
+    backgroundColor: "ghostwhite",
   }
 })
 
