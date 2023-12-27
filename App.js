@@ -52,8 +52,8 @@ function App() {
   const [dialPad, setDialPad] = useState(false);
 
   function handleCallMenuPress() {setCurrentMenu("RECENT")};
-  function handleContactsMenuPress() {setCurrentMenu("CONTACTS")};
   function handleLeadsMenuPress() {setCurrentMenu("LEADS")};
+  function handleContactsMenuPress() {setCurrentMenu("CONTACTS")};
 
   function handleSearchCallList(searchTerm) {
     if (searchTerm == "") {
@@ -106,7 +106,7 @@ function App() {
           ></TextInput>
         </View>
         
-        {currentMenu == "RECENT" && <ScrollView style={{ height: "81%", backgroundColor: "ghostwhite" }}>
+        {currentMenu == "RECENT" && <ScrollView style={{ height: "80%", backgroundColor: "ghostwhite" }}>
           {previousCallList.map((item, index) => (
             <View
               key={index}
@@ -146,7 +146,7 @@ function App() {
           ))}
         </ScrollView>}
 
-        {currentMenu == "CONTACTS" && <ScrollView style={{ height: "81%", backgroundColor: "ghostwhite" }}>
+        {currentMenu == "CONTACTS" && <ScrollView style={{ height: "80%", backgroundColor: "ghostwhite" }}>
           {contactsList.map((item, index) => (
             <View
               key={index}
@@ -186,7 +186,7 @@ function App() {
           ))}
         </ScrollView>}
 
-        {currentMenu == "LEADS" && <ScrollView style={{ height: "81%", backgroundColor: "ghostwhite" }}>
+        {currentMenu == "LEADS" && <ScrollView style={{ height: "80%", backgroundColor: "ghostwhite" }}>
           {leadsList.map((item, index) => (
             <View
               key={index}
@@ -240,6 +240,7 @@ function App() {
                 type="Ionicons"
                 size={24}
                 color="#702670"
+                reverse={currentMenu == "RECENT"}
               />
             </TouchableOpacity>
           </View>
@@ -257,6 +258,7 @@ function App() {
                 size={24}
                 color="#702670"
                 solid
+                reverse={currentMenu == "LEADS"}
               />
             </TouchableOpacity>
           </View>
@@ -273,6 +275,7 @@ function App() {
                 type="fontisto"
                 size={24}
                 color="#702670"
+                reverse={currentMenu == "CONTACTS"}
               />
             </TouchableOpacity>
           </View>          
@@ -344,7 +347,7 @@ function App() {
                 <Icon
                   name="chevron-down"
                   type="font-awesome-5"
-                  size={36}
+                  size={28}
                   color="grey"
                   solid
                 />
@@ -367,7 +370,7 @@ const xxx = StyleSheet.create({
   },
   tacButtons: {    
     position: "absolute", 
-    bottom: "8%",
+    bottom: "9%",
     alignItems: "center",
     justifyContent: "center",
     zIndex: 30,
@@ -399,7 +402,7 @@ const xxx = StyleSheet.create({
     alignItems: "center"
   },
   menuStyle: {    
-    height: "7%",
+    height: "8%",
     width: "90%",
     marginHorizontal: "5%",
     paddingHorizontal: 36,
