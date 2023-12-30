@@ -5,12 +5,13 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  StyleSheet
+  StyleSheet,
+  Linking
 } from "react-native";
 import { Icon } from "@rneui/themed";
 const recentList = [
-    { name: "Ghostbusters", number: "9876543210" },
-    { name: "A Friend", number: "1800 69 420" },
+    { name: "Ghostbusters", number: "9289287145" },
+    { name: "A Friend", number: "9599059258" },
     { name: "Your Bluff Mr. Bond", number: "AAA6687654" },
     { name: "John", number: "5644858875" },
     { name: "John Wick", number: "9685475241" },
@@ -20,7 +21,7 @@ const recentList = [
     { name: "A Vacuum Machine Seller", number: "18005649988" },
     { name: "Ma Look", number: "1800659989" },
     { name: "It Even", number: "657894558785" },
-    { name: "In The Marines", number: "356365615236446583" },
+    { name: "In The Marines", number: "9289287145" },
   ];
 
 const contactsList = [
@@ -67,6 +68,12 @@ function App() {
       setPreviousCallList(filteredPreviousCallList);
     }
   };
+
+  function handleCallThisPerson (itemNumber) {
+    Linking.openURL(`tel:${itemNumber}`).catch((err) =>
+      console.error('Error opening phone app:', err)
+    );
+  }
   
   return (
     <View
@@ -108,14 +115,7 @@ function App() {
         
         {currentMenu == "RECENT" && <ScrollView style={{ height: "80%", backgroundColor: "ghostwhite" }}>
           {previousCallList.map((item, index) => (
-            <View
-              key={index}
-              style={{
-                padding: 20,
-                backgroundColor: "ghostwhite",
-                flexDirection: "row",
-              }}
-            >
+            <View key={index} style={xxx.contactEntry} >
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
                 <TouchableOpacity>
                   <Icon
@@ -128,8 +128,10 @@ function App() {
                 </TouchableOpacity>
               </View>
               <View style={{ flex: 8, paddingLeft: 6 }}>
-                <Text style={{ fontSize: 16 }}>{item.name} </Text>
-                <Text style={{ fontSize: 12, color: "dimgrey" }}>{item.number} </Text>
+                <TouchableOpacity onPress={() => handleCallThisPerson(item.number)}>
+                  <Text style={{ fontSize: 16 }}>{item.name} </Text>
+                  <Text style={{ fontSize: 12, color: "dimgrey" }}>{item.number} </Text>
+                </TouchableOpacity>
               </View>
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
                 <TouchableOpacity>
@@ -168,8 +170,10 @@ function App() {
                 </TouchableOpacity>
               </View>
               <View style={{ flex: 8, paddingLeft: 6 }}>
-                <Text style={{ fontSize: 16 }}>{item.name} </Text>
-                <Text style={{ fontSize: 12, color: "dimgrey" }}>{item.number} </Text>
+                <TouchableOpacity onPress={() => handleCallThisPerson(item.number)}>
+                  <Text style={{ fontSize: 16 }}>{item.name} </Text>
+                  <Text style={{ fontSize: 12, color: "dimgrey" }}>{item.number} </Text>
+                </TouchableOpacity>
               </View>
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
                 <TouchableOpacity>
@@ -208,8 +212,10 @@ function App() {
                 </TouchableOpacity>
               </View>
               <View style={{ flex: 8, paddingLeft: 6 }}>
-                <Text style={{ fontSize: 16 }}>{item.name} </Text>
-                <Text style={{ fontSize: 12, color: "dimgrey" }}>{item.number} </Text>
+                <TouchableOpacity onPress={() => handleCallThisPerson(item.number)}>
+                  <Text style={{ fontSize: 16 }}>{item.name} </Text>
+                  <Text style={{ fontSize: 12, color: "dimgrey" }}>{item.number} </Text>
+                </TouchableOpacity>
               </View>
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
                 <TouchableOpacity>
@@ -425,6 +431,11 @@ const xxx = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     backgroundColor: "ghostwhite",
+  },
+  contactEntry: {
+    padding: 20,
+    backgroundColor: "ghostwhite",
+    flexDirection: "row",
   }
 })
 
