@@ -51,15 +51,24 @@ function App() {
   const [previousCallList, setPreviousCallList] = useState(recentList);
   const [currentMenu, setCurrentMenu] = useState("RECENT");
   const [dialPad, setDialPad] = useState(false);
+  const [contactsList, setContactsList] = useState([])
 
   function handleCallMenuPress() {setCurrentMenu("RECENT")};
   function handleLeadsMenuPress() {setCurrentMenu("LEADS")};
+
   async function handleContactsMenuPress() {
     setCurrentMenu("CONTACTS");
     const response = await fetch('https://raw.githubusercontent.com/UzmanQaisar/callamari/main/tempServer/myContacts.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    console.log("Check 1")
     const jsonData = await response.json();
-    setContactsList(jsonData);
-    console.log("I am here, Iam queer...")
+    if (jsonData) {
+      console.log("Check 2");
+      setContactsList(jsonData);
+      console.log("Check 3");
+    }
   };
 
   function handleSearchCallList(searchTerm) {
@@ -81,7 +90,6 @@ function App() {
     );
   };
 
-  const [contactsList, setContactsList] = useState([])
 
   // useEffect(() => {
   //   const fetchData = async () => {
