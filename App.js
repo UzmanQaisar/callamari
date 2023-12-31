@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   View,
   StyleSheet,
-  Linking
+  Linking,
+  FlatList
 } from "react-native";
 import { Icon } from "@rneui/themed";
 const recentList = [
@@ -180,8 +181,12 @@ function App() {
           ))}
         </ScrollView>}
 
-        {currentMenu == "CONTACTS" && <ScrollView style={{ height: "80%", backgroundColor: "ghostwhite" }}>
-          {contactsList.map((item, index) => (
+        {currentMenu == "CONTACTS" && (
+        <FlatList 
+          style={{ height: "80%", backgroundColor: "ghostwhite" }}
+          data={contactsList}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item, index }) => (
             <View
               key={index}
               style={{
@@ -219,8 +224,10 @@ function App() {
                 </TouchableOpacity>
               </View>
             </View>
-          ))}
-        </ScrollView>}
+          )}
+        />
+        )}
+          
 
         {currentMenu == "LEADS" && <ScrollView style={{ height: "80%", backgroundColor: "ghostwhite" }}>
           {leadsList.map((item, index) => (
