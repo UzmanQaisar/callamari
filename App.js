@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ScrollView,
   Text,
@@ -24,7 +24,7 @@ const recentList = [
     { name: "In The Marines", number: "9289287145" },
   ];
 
-const contactsList = [
+const contactsListOLD = [
   {name: "Alpha", number: "1236547890"},
   {name: "Beta", number: "6977890"},
   {name: "Gamma", number: "57575757347890"},
@@ -54,7 +54,13 @@ function App() {
 
   function handleCallMenuPress() {setCurrentMenu("RECENT")};
   function handleLeadsMenuPress() {setCurrentMenu("LEADS")};
-  function handleContactsMenuPress() {setCurrentMenu("CONTACTS")};
+  async function handleContactsMenuPress() {
+    setCurrentMenu("CONTACTS");
+    const response = await fetch('https://raw.githubusercontent.com/UzmanQaisar/callamari/main/tempServer/myContacts.json');
+    const jsonData = await response.json();
+    setContactsList(jsonData);
+    console.log("I am here, Iam queer...")
+  };
 
   function handleSearchCallList(searchTerm) {
     if (searchTerm == "") {
@@ -73,7 +79,25 @@ function App() {
     Linking.openURL(`tel:${itemNumber}`).catch((err) =>
       console.error('Error opening phone app:', err)
     );
-  }
+  };
+
+  const [contactsList, setContactsList] = useState([])
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       console.log("I have only begun");
+  //       const response = await fetch('https://raw.githubusercontent.com/UzmanQaisar/callamari/main/tempServer/myContacts.json');
+  //       const jsonData = await response.json();
+  //       setContactsList(jsonData);
+  //       console.log("I am finished.")
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
   
   return (
     <View
