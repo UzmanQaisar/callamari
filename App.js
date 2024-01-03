@@ -120,7 +120,7 @@ function App() {
       <View
         style={{
           flex: 1,
-          backgroundColor: "ghostwhite",
+          backgroundColor: "#2c2d31",
           height: "100%",
           width: "100%",
         }}
@@ -131,7 +131,7 @@ function App() {
             flexDirection: "row",
             justifyContent: "space-evenly",
             paddingHorizontal: 36,
-            backgroundColor: "ghostwhite",
+            backgroundColor: "#2c2d31",
           }}
         ></View>        
 
@@ -140,13 +140,14 @@ function App() {
             style={{
               fontSize: 20,
               width: "86%",
+              color: "#2c2d31",
             }}
             placeholder={`🔍  ${recentList.length} contacts`}
             onChangeText={handleSearchCallList}
           ></TextInput>
         </View>
         
-        {currentMenu == "RECENT" && <ScrollView style={{ height: "80%", backgroundColor: "ghostwhite" }}>
+        {currentMenu == "RECENT" && <ScrollView style={{ height: "80%", backgroundColor: "#2c2d31" }}>
           {previousCallList.map((item, index) => (
             <View key={index} style={xxx.contactEntry} >
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
@@ -155,15 +156,15 @@ function App() {
                     name="person-outline"
                     type="Ionicons"
                     size={32}
-                    color="#020403"
+                    color="#e7e8ea"
                     solid
                   />
                 </TouchableOpacity>
               </View>
               <View style={{ flex: 8, paddingLeft: 6 }}>
                 <TouchableOpacity onPress={() => handleCallThisPerson(item.number)}>
-                  <Text style={{ fontSize: 16 }}>{item.name} </Text>
-                  <Text style={{ fontSize: 12, color: "dimgrey" }}>{item.number} </Text>
+                  <Text style={{ fontSize: 16, color: "#e7e8ea" }}>{item.name} </Text>
+                  <Text style={{ fontSize: 12, color: "#e7e8ea" }}>{item.number} </Text>
                 </TouchableOpacity>
               </View>
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
@@ -172,7 +173,7 @@ function App() {
                     name="chevron-right"
                     type="font-awesome-5"
                     size={20}
-                    color="grey"
+                    color="silver"
                     solid
                   />
                 </TouchableOpacity>
@@ -183,7 +184,7 @@ function App() {
 
         {currentMenu == "CONTACTS" && (
         <FlatList 
-          style={{ height: "80%", backgroundColor: "ghostwhite" }}
+          style={{ height: "80%", backgroundColor: "#2c2d31" }}
           data={contactsList}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item, index }) => (
@@ -191,7 +192,7 @@ function App() {
               key={index}
               style={{
                 padding: 20,
-                backgroundColor: "ghostwhite",
+                backgroundColor: "#2c2d31",
                 flexDirection: "row",
               }}
             >
@@ -201,15 +202,15 @@ function App() {
                     name="person"
                     type="Ionicons"
                     size={32}
-                    color="#020403"
+                    color="#e7e8ea"
                     solid
                   />
                 </TouchableOpacity>
               </View>
               <View style={{ flex: 8, paddingLeft: 6 }}>
                 <TouchableOpacity onPress={() => handleCallThisPerson(item.number)}>
-                  <Text style={{ fontSize: 16 }}>{item.name} </Text>
-                  <Text style={{ fontSize: 12, color: "dimgrey" }}>{item.number} </Text>
+                  <Text style={{ fontSize: 16, color: "#e7e8ea" }}>{item.name} </Text>
+                  <Text style={{ fontSize: 12, color: "#e7e8ea" }}>{item.number} </Text>
                 </TouchableOpacity>
               </View>
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
@@ -218,7 +219,7 @@ function App() {
                     name="chevron-right"
                     type="font-awesome-5"
                     size={20}
-                    color="dimgrey"
+                    color="silver"
                     solid
                   />
                 </TouchableOpacity>
@@ -226,16 +227,15 @@ function App() {
             </View>
           )}
         />
-        )}
-          
+        )}          
 
-        {currentMenu == "LEADS" && <ScrollView style={{ height: "80%", backgroundColor: "ghostwhite" }}>
+        {currentMenu == "LEADS" && <ScrollView style={{ height: "80%", backgroundColor: "#2c2d31" }}>
           {leadsList.map((item, index) => (
             <View
               key={index}
               style={{
                 padding: 20,
-                backgroundColor: "ghostwhite",
+                backgroundColor: "#2c2d31",
                 flexDirection: "row",
               }}
             >
@@ -245,15 +245,15 @@ function App() {
                     name="thumbs-up"
                     type="entypo"
                     size={28}
-                    color="#020403"
+                    color="#e7e8ea"
                     solid
                   />
                 </TouchableOpacity>
               </View>
               <View style={{ flex: 8, paddingLeft: 6 }}>
                 <TouchableOpacity onPress={() => handleCallThisPerson(item.number)}>
-                  <Text style={{ fontSize: 16 }}>{item.name} </Text>
-                  <Text style={{ fontSize: 12, color: "dimgrey" }}>{item.number} </Text>
+                  <Text style={{ fontSize: 16, color: "#e7e8ea" }}>{item.name} </Text>
+                  <Text style={{ fontSize: 12, color: "#e7e8ea" }}>{item.number} </Text>
                 </TouchableOpacity>
               </View>
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
@@ -262,7 +262,7 @@ function App() {
                     name="chevron-right"
                     type="font-awesome-5"
                     size={20}
-                    color="dimgrey"
+                    color="silver"
                     solid
                   />
                 </TouchableOpacity>
@@ -272,58 +272,58 @@ function App() {
         </ScrollView>}
 
         <View style={xxx.menuStyle} >
-          <View
-            style={{
-              width: "30%",
+          <TouchableOpacity 
+          onPress={handleCallMenuPress}
+          style={{
+              width: "17%",
               justifyContent: "center",
               alignItems: "center",
-            }}
-          >
-            <TouchableOpacity onPress={handleCallMenuPress}>
+              // backgroundColor: "#e7e8ea",
+              borderRadius: 40
+            }}>
               <Icon
                 name="call"
                 type="Ionicons"
-                size={24}
-                color="#702670"
+                size={20}
+                color="#00aaff"
                 reverse={currentMenu == "RECENT"}
               />
-            </TouchableOpacity>
-          </View>
-          <View
+          </TouchableOpacity>
+          <TouchableOpacity 
+          onPress={handleLeadsMenuPress}
             style={{
-              width: "30%",
+              width: "17%",
               justifyContent: "center",
               alignItems: "center",
-            }}
-          >
-            <TouchableOpacity onPress={handleLeadsMenuPress}>
+              // backgroundColor: "#e7e8ea",
+              borderRadius: 40
+            }}>      
               <Icon
                 name="handshake"
                 type="font-awesome-5"
-                size={24}
-                color="#702670"
+                size={20}
+                color="#00aaff"
                 solid
                 reverse={currentMenu == "LEADS"}
               />
-            </TouchableOpacity>
-          </View>
-          <View
+          </TouchableOpacity>
+          <TouchableOpacity 
+          onPress={handleContactsMenuPress}
             style={{
-              width: "30%",
+              width: "17%",
               justifyContent: "center",
               alignItems: "center",
-            }}
-          >
-            <TouchableOpacity onPress={handleContactsMenuPress}>
+              // backgroundColor: "#e7e8ea",
+              borderRadius: 40
+            }}>   
               <Icon
                 name="persons"
                 type="fontisto"
-                size={24}
-                color="#702670"
+                size={20}
+                color="#00aaff"
                 reverse={currentMenu == "CONTACTS"}
               />
-            </TouchableOpacity>
-          </View>          
+          </TouchableOpacity>
         </View>
 
         {!dialPad && <View style={[xxx.tacButtons, {right: "6%"}]}
@@ -332,8 +332,8 @@ function App() {
             <Icon 
               name="phone-forwarded"
               type="MaterialIcons"
-              size={28}
-              color="#702670"
+              size={30}
+              color="#00aaff"
             />
           </TouchableOpacity>
         </View>}
@@ -344,8 +344,8 @@ function App() {
             <Icon 
               name="dialpad"
               type="Entypo"
-              size={28}
-              color="#702670"
+              size={30}
+              color="#00aaff"
             />
           </TouchableOpacity>
         </View>}
@@ -419,9 +419,9 @@ const xxx = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     zIndex: 30,
-    backgroundColor: "ghostwhite",
-    borderWidth: 2,
-    borderColor: "#702670",
+    backgroundColor: "#535a63",
+    // borderWidth: 2,
+    borderColor: "#008cff",
     borderRadius: 48, 
     height: 52, 
     width: 52
@@ -448,17 +448,18 @@ const xxx = StyleSheet.create({
   },
   menuStyle: {    
     height: "8%",
-    width: "90%",
-    marginHorizontal: "5%",
+    width: "100%",
+    marginHorizontal: "0%",
     paddingHorizontal: 36,
+    paddingVertical: 4,
     flexDirection: "row",
     justifyContent: "space-evenly",
-    backgroundColor: "ghostwhite",
-    borderWidth: 1,
+    backgroundColor: "#535A63",
+    borderWidth: 0,
     borderBottomWidth: 0,
     borderColor: "#702670",
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   searchBarParent: {    
     height: "6%",
@@ -469,11 +470,11 @@ const xxx = StyleSheet.create({
     borderRadius: 36,
     flexDirection: "row",
     justifyContent: "center",
-    backgroundColor: "ghostwhite",
+    backgroundColor: "#e7e8ea",
   },
   contactEntry: {
     padding: 20,
-    backgroundColor: "ghostwhite",
+    backgroundColor: "#2c2d31",
     flexDirection: "row",
   }
 })
