@@ -351,7 +351,7 @@ function App() {
         </View>}
 
         {dialPad && <View style={xxx.dialPadStyle} >
-          <View style={[xxx.dialPadRowStyle, {height: "14%", backgroundColor: "#cfc5ce"}]}>
+          <View style={[xxx.dialPadRowStyle, {height: "14%", backgroundColor: "#16a085"}]}>
             <Text style={{fontSize: 30, fontFamily: "sans-serif", letterSpacing: 1}}>+91 9955496821</Text>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
@@ -382,7 +382,7 @@ function App() {
                   name="phone"
                   type="MaterialIcons"
                   size={28}
-                  color="green"
+                  color="#16a085"
                   reverse
                 />
               </TouchableOpacity>
@@ -393,7 +393,7 @@ function App() {
                   name="chevron-down"
                   type="font-awesome-5"
                   size={28}
-                  color="grey"
+                  color="#16a085"
                   solid
                 />
               </TouchableOpacity>
@@ -428,14 +428,14 @@ const xxx = StyleSheet.create({
   },
   dialPadStyle: {    
     position: "absolute", 
-    bottom: "8%", 
+    bottom: "9%", 
     right: "5%",
     zIndex: 20,
     flexDirection: "column",
-    backgroundColor: "ghostwhite",
+    backgroundColor: "#e7e8ea",
     borderRadius: 20,
-    borderWidth: 1,
-    borderColor: "#702670",
+    // borderWidth: 1,
+    borderColor: "#00aaff",
     overflow: "hidden",
     height: "54%", 
     width: "90%"
