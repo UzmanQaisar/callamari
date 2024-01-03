@@ -7,7 +7,8 @@ import {
   View,
   StyleSheet,
   Linking,
-  FlatList
+  FlatList,
+  TouchableHighlight
 } from "react-native";
 import { Icon } from "@rneui/themed";
 const recentList = [
@@ -52,6 +53,7 @@ function App() {
   const [previousCallList, setPreviousCallList] = useState(recentList);
   const [currentMenu, setCurrentMenu] = useState("RECENT");
   const [dialPad, setDialPad] = useState(false);
+  const [dialedNumber,setDialedNumber] = useState("");
   const [contactsList, setContactsList] = useState([])
 
   function handleCallMenuPress() {setCurrentMenu("RECENT")};
@@ -85,10 +87,19 @@ function App() {
     }
   };
 
+  function addDigit(num) {
+    setDialedNumber(prev => prev + num)
+  };
+
+  function removeDigits() {
+    setDialedNumber(prev => prev.slice(0, -1))
+  }
+
   function handleCallThisPerson (itemNumber) {
+    if (itemNumber) {
     Linking.openURL(`tel:${itemNumber}`).catch((err) =>
       console.error('Error opening phone app:', err)
-    );
+    )}
   };
 
 
@@ -326,7 +337,7 @@ function App() {
           </TouchableOpacity>
         </View>
 
-        {!dialPad && <View style={[xxx.tacButtons, {right: "6%"}]}
+        {!dialPad && <View style={[xxx.tacButtons, {bottom: "17%"}]}
         >
           <TouchableOpacity>
             <Icon 
@@ -338,7 +349,7 @@ function App() {
           </TouchableOpacity>
         </View>}
 
-        {!dialPad && <View style={[xxx.tacButtons, {right: "22%"}]}
+        {!dialPad && <View style={[xxx.tacButtons, {bottom: "9%"}]}
         >
           <TouchableOpacity onPress={() => setDialPad(!dialPad)}>
             <Icon 
@@ -351,33 +362,42 @@ function App() {
         </View>}
 
         {dialPad && <View style={xxx.dialPadStyle} >
-          <View style={[xxx.dialPadRowStyle, {height: "14%", backgroundColor: "#16a085"}]}>
-            <Text style={{fontSize: 30, fontFamily: "sans-serif", letterSpacing: 1}}>+91 9955496821</Text>
+          <View style={xxx.dialStrip}>
+            <TouchableOpacity style={xxx.backSpace}></TouchableOpacity>
+            <Text style={{fontSize: 30, fontFamily: "sans-serif", letterSpacing: 1, flex: 8, textAlign: "center"}}>{dialedNumber}</Text>
+            <TouchableOpacity style={xxx.backSpace} onPress={removeDigits}>
+              <Icon 
+                  name="backspace"
+                  type="IonIcons"
+                  size={28}
+                  color="#2c2d31"
+              />
+            </TouchableOpacity>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
-            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>1</Text></View>
-            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>2</Text></View>
-            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>3</Text></View>
+            <TouchableHighlight style={xxx.keypadButton} onPress={() => addDigit(1)}><Text style={xxx.digits}>1</Text></TouchableHighlight>
+            <TouchableHighlight style={xxx.keypadButton} onPress={() => addDigit(2)}><Text style={xxx.digits}>2</Text></TouchableHighlight>
+            <TouchableHighlight style={xxx.keypadButton} onPress={() => addDigit(3)}><Text style={xxx.digits}>3</Text></TouchableHighlight>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
-            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>4</Text></View>
-            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>5</Text></View>
-            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>6</Text></View>
+            <TouchableHighlight style={xxx.keypadButton} onPress={() => addDigit(4)}><Text style={xxx.digits}>4</Text></TouchableHighlight>
+            <TouchableHighlight style={xxx.keypadButton} onPress={() => addDigit(5)}><Text style={xxx.digits}>5</Text></TouchableHighlight>
+            <TouchableHighlight style={xxx.keypadButton} onPress={() => addDigit(6)}><Text style={xxx.digits}>6</Text></TouchableHighlight>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
-            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>7</Text></View>
-            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>8</Text></View>
-            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>9</Text></View>
+            <TouchableHighlight style={xxx.keypadButton} onPress={() => addDigit(7)}><Text style={xxx.digits}>7</Text></TouchableHighlight>
+            <TouchableHighlight style={xxx.keypadButton} onPress={() => addDigit(8)}><Text style={xxx.digits}>8</Text></TouchableHighlight>
+            <TouchableHighlight style={xxx.keypadButton} onPress={() => addDigit(9)}><Text style={xxx.digits}>9</Text></TouchableHighlight>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
-            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>*</Text></View>
-            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>0</Text></View>
-            <View style={xxx.keypadButton}><Text style={{fontSize: 28}}>#</Text></View>
+            <TouchableHighlight style={xxx.keypadButton} onPress={() => addDigit(`*`)}><Text style={xxx.digits}>*</Text></TouchableHighlight>
+            <TouchableHighlight style={xxx.keypadButton} onPress={() => addDigit(0)}><Text style={xxx.digits}>0</Text></TouchableHighlight>
+            <TouchableHighlight style={xxx.keypadButton} onPress={() => addDigit(`#`)}><Text style={xxx.digits}>#</Text></TouchableHighlight>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "18%"}]}>
             <View style={xxx.keypadButton}></View>
             <View style={xxx.keypadButton}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => handleCallThisPerson(dialedNumber)}>
                 <Icon 
                   name="phone"
                   type="MaterialIcons"
@@ -409,13 +429,14 @@ function App() {
 
 const xxx = StyleSheet.create({
   keypadButton: {
+    height: "80%",
     width: "32%", 
     alignItems: "center", 
     justifyContent: "center"
   },
   tacButtons: {    
     position: "absolute", 
-    bottom: "9%",
+    right: "6%",
     alignItems: "center",
     justifyContent: "center",
     zIndex: 30,
@@ -444,7 +465,8 @@ const xxx = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    fontSize: 28
   },
   menuStyle: {    
     height: "8%",
@@ -476,6 +498,24 @@ const xxx = StyleSheet.create({
     padding: 20,
     backgroundColor: "#2c2d31",
     flexDirection: "row",
+  },
+  dialStrip: {
+    width: "100%", 
+    flexDirection: "row",
+    alignItems: "center",
+    // justifyContent: "center",
+    height: "14%", 
+    backgroundColor: "#16a085"
+  },
+  backSpace: {
+    height: "80%",
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 2
+  },
+  digits: {
+    fontSize: 28,
+    color: "#2c2d31"
   }
 })
 
