@@ -64,12 +64,9 @@ function App() {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    console.log("Check 1")
     const jsonData = await response.json();
     if (jsonData) {
-      console.log("Check 2");
       setContactsList(jsonData);
-      console.log("Check 3");
     }
   };
 
@@ -96,9 +93,9 @@ function App() {
 
   function handleCallThisPerson (itemNumber) {
     if (itemNumber) {
-    Linking.openURL(`tel:${itemNumber}`).catch((err) =>
-      console.error('Error opening phone app:', err)
-    )}
+      Linking.openURL(`tel:${itemNumber}`)
+      .catch((err) => console.error('Error opening phone app:', err))
+    }
   };
 
 
