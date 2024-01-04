@@ -7,7 +7,8 @@ import {
   View,
   StyleSheet,
   Linking,
-  FlatList
+  FlatList,
+  StatusBar
 } from "react-native";
 import { Icon } from "@rneui/themed";
 const recentList = [
@@ -132,9 +133,11 @@ function App() {
           width: "100%",
         }}
       >
+        <StatusBar barStyle="light-content"/>
+        
         <View
           style={{
-            height: "5%",
+            height: "1%",
             flexDirection: "row",
             justifyContent: "space-evenly",
             paddingHorizontal: 36,
@@ -154,7 +157,7 @@ function App() {
           ></TextInput>
         </View>
         
-        {currentMenu == "RECENT" && <ScrollView style={{ height: "80%", backgroundColor: "#2c2d31" }}>
+        {currentMenu == "RECENT" && <ScrollView style={{ height: "84%", backgroundColor: "#2c2d31" }}>
           {previousCallList.map((item, index) => (
             <View key={index} style={xxx.contactEntry} >
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
@@ -191,7 +194,7 @@ function App() {
 
         {currentMenu == "CONTACTS" && (
         <FlatList 
-          style={{ height: "80%", backgroundColor: "#2c2d31" }}
+          style={{ height: "84%", backgroundColor: "#2c2d31" }}
           data={contactsList}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item, index }) => (
@@ -236,7 +239,7 @@ function App() {
         />
         )}          
 
-        {currentMenu == "LEADS" && <ScrollView style={{ height: "80%", backgroundColor: "#2c2d31" }}>
+        {currentMenu == "LEADS" && <ScrollView style={{ height: "84%", backgroundColor: "#2c2d31" }}>
           {leadsList.map((item, index) => (
             <View
               key={index}
@@ -333,7 +336,7 @@ function App() {
           </TouchableOpacity>
         </View>
 
-        {!dialPad && <View style={[xxx.tacButtons, {bottom: "17%"}]}
+        {!dialPad && <View style={[xxx.tacButtons, {bottom: "19%"}]}
         >
           <TouchableOpacity>
             <Icon 
@@ -345,7 +348,7 @@ function App() {
           </TouchableOpacity>
         </View>}
 
-        {!dialPad && <View style={[xxx.tacButtons, {bottom: "9%"}]}
+        {!dialPad && <View style={[xxx.tacButtons, {bottom: "10%"}]}
         >
           <TouchableOpacity onPress={() => setDialPad(!dialPad)}>
             <Icon 
@@ -465,7 +468,7 @@ const xxx = StyleSheet.create({
     fontSize: 28
   },
   menuStyle: {    
-    height: "8%",
+    height: "9%",
     width: "100%",
     marginHorizontal: "0%",
     paddingHorizontal: 36,
