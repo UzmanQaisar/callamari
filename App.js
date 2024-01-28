@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useFonts } from 'expo-font';
 import {
   ScrollView,
   Text,
@@ -11,6 +12,8 @@ import {
   StatusBar
 } from "react-native";
 import { Icon } from "@rneui/themed";
+
+
 const recentList = [
     { name: "Ghostbusters", number: "9289287145" },
     { name: "A Friend", number: "9599059258" },
@@ -92,7 +95,10 @@ function App() {
     setDialedNumber(prev => prev.slice(0, -1))
   }
 
-  function handleCallThisPerson (itemNumber) {
+  function handleCallThisPerson (itemNumber, item) {
+    if (item) {
+      setPreviousCallList(prev => [item, ...prev])
+    }
     if (itemNumber) {
       Linking.openURL(`tel:${itemNumber}`)
       .catch((err) => console.error('Error opening phone app:', err))
@@ -115,6 +121,21 @@ function App() {
 
   //   fetchData();
   // }, []);
+
+  const [fontsLoaded] = useFonts({
+    'whitney-light': require('./assets/fonts/whitney-light.otf'),
+    'whitney-book': require('./assets/fonts/whitney-book.otf'),
+    'whitney-medium': require('./assets/fonts/whitney-medium.otf'),
+    'whitney-semibold': require('./assets/fonts/whitney-semibold.otf'),
+  });
+  if (!fontsLoaded) {
+    return <View style={{
+      flex: 1,
+      backgroundColor: "#2c2d31",
+      height: "100%",
+      width: "100%",
+    }}/>;
+  }
   
   return (
     <View
@@ -151,6 +172,7 @@ function App() {
               fontSize: 20,
               width: "86%",
               color: "#2c2d31",
+              fontFamily: "whitney-book"
             }}
             placeholder={`🔍  ${recentList.length} contacts`}
             onChangeText={handleSearchCallList}
@@ -172,9 +194,9 @@ function App() {
                 </TouchableOpacity>
               </View>
               <View style={{ flex: 8, paddingLeft: 6 }}>
-                <TouchableOpacity onPress={() => handleCallThisPerson(item.number)}>
-                  <Text style={{ fontSize: 16, color: "#e7e8ea" }}>{item.name} </Text>
-                  <Text style={{ fontSize: 12, color: "#e7e8ea" }}>{item.number} </Text>
+                <TouchableOpacity onPress={() => handleCallThisPerson(item.number, item)}>
+                  <Text style={{ fontSize: 16, color: "#e7e8ea", fontFamily: "whitney-medium" }}>{item.name} </Text>
+                  <Text style={{ fontSize: 12, color: "#e7e8ea", fontFamily: "whitney-book" }}>{item.number} </Text>
                 </TouchableOpacity>
               </View>
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
@@ -218,9 +240,9 @@ function App() {
                 </TouchableOpacity>
               </View>
               <View style={{ flex: 8, paddingLeft: 6 }}>
-                <TouchableOpacity onPress={() => handleCallThisPerson(item.number)}>
-                  <Text style={{ fontSize: 16, color: "#e7e8ea" }}>{item.name} </Text>
-                  <Text style={{ fontSize: 12, color: "#e7e8ea" }}>{item.number} </Text>
+                <TouchableOpacity onPress={() => handleCallThisPerson(item.number, item)}>
+                  <Text style={{ fontSize: 16, color: "#e7e8ea", fontFamily: "whitney-medium" }}>{item.name} </Text>
+                  <Text style={{ fontSize: 12, color: "#e7e8ea", fontFamily: "whitney-book" }}>{item.number} </Text>
                 </TouchableOpacity>
               </View>
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
@@ -261,9 +283,9 @@ function App() {
                 </TouchableOpacity>
               </View>
               <View style={{ flex: 8, paddingLeft: 6 }}>
-                <TouchableOpacity onPress={() => handleCallThisPerson(item.number)}>
-                  <Text style={{ fontSize: 16, color: "#e7e8ea" }}>{item.name} </Text>
-                  <Text style={{ fontSize: 12, color: "#e7e8ea" }}>{item.number} </Text>
+                <TouchableOpacity onPress={() => handleCallThisPerson(item.number, item)}>
+                  <Text style={{ fontSize: 16, color: "#e7e8ea", fontFamily: "whitney-medium" }}>{item.name} </Text>
+                  <Text style={{ fontSize: 12, color: "#e7e8ea", fontFamily: "whitney-book" }}>{item.number} </Text>
                 </TouchableOpacity>
               </View>
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
@@ -363,7 +385,7 @@ function App() {
         {dialPad && <View style={xxx.dialPadStyle} >
           <View style={xxx.dialStrip}>
             <TouchableOpacity style={xxx.backSpace}></TouchableOpacity>
-            <Text style={{fontSize: 30, fontFamily: "sans-serif", letterSpacing: 1, flex: 8, textAlign: "center"}}>{dialedNumber}</Text>
+            <Text style={{fontSize: 30, fontFamily: "whitney-semibold", letterSpacing: 1, flex: 8, textAlign: "center"}}>{dialedNumber}</Text>
             <TouchableOpacity style={xxx.backSpace} onPress={removeDigits}>
               <Icon 
                   name="backspace"
@@ -448,7 +470,7 @@ const xxx = StyleSheet.create({
   },
   dialPadStyle: {    
     position: "absolute", 
-    bottom: "9%", 
+    bottom: "10%", 
     right: "5%",
     zIndex: 20,
     flexDirection: "column",
@@ -486,7 +508,7 @@ const xxx = StyleSheet.create({
     height: "6%",
     width: "80%",
     marginHorizontal: "10%",
-    borderWidth: 1,
+    borderWidth: 0,
     borderColor: "#702670",
     borderRadius: 36,
     flexDirection: "row",
@@ -514,7 +536,8 @@ const xxx = StyleSheet.create({
   },
   digits: {
     fontSize: 28,
-    color: "#2c2d31"
+    color: "#2c2d31",
+    fontFamily: "whitney-semibold"
   }
 })
 
