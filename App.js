@@ -88,7 +88,7 @@ function App() {
   };
 
   function addDigit(num) {
-    setDialedNumber(prev => prev + num)
+    setDialedNumber(dialedNumber + num)
   };
 
   function removeDigits() {
@@ -154,6 +154,7 @@ function App() {
           width: "100%",
         }}
       >
+
         <StatusBar barStyle="light-content"/>
         
         <View
@@ -306,54 +307,32 @@ function App() {
         <View style={xxx.menuStyle} >
           <TouchableOpacity 
           onPress={handleCallMenuPress}
-          style={{
-              width: "17%",
-              justifyContent: "center",
-              alignItems: "center",
-              // backgroundColor: "#e7e8ea",
-              borderRadius: 40
-            }}>
+          style={[xxx.menuItems, {borderTopWidth: currentMenu === "RECENT" ? 4 : 0}]}>
               <Icon
-                name="call"
-                type="Ionicons"
-                size={20}
+                name="clock"
+                type="feather"
+                size={28}
                 color="#00aaff"
-                reverse={currentMenu == "RECENT"}
               />
           </TouchableOpacity>
           <TouchableOpacity 
           onPress={handleLeadsMenuPress}
-            style={{
-              width: "17%",
-              justifyContent: "center",
-              alignItems: "center",
-              // backgroundColor: "#e7e8ea",
-              borderRadius: 40
-            }}>      
+            style={[xxx.menuItems, {borderTopWidth: currentMenu === "LEADS" ? 4 : 0}]}>      
               <Icon
-                name="handshake"
-                type="font-awesome-5"
-                size={20}
+                name="bookmark"
+                type="fontisto"
+                size={28}
                 color="#00aaff"
-                solid
-                reverse={currentMenu == "LEADS"}
               />
           </TouchableOpacity>
           <TouchableOpacity 
           onPress={handleContactsMenuPress}
-            style={{
-              width: "17%",
-              justifyContent: "center",
-              alignItems: "center",
-              // backgroundColor: "#e7e8ea",
-              borderRadius: 40
-            }}>   
+            style={[xxx.menuItems, {borderTopWidth: currentMenu === "CONTACTS" ? 4 : 0}]}>
               <Icon
-                name="persons"
-                type="fontisto"
-                size={20}
+                name="contacts"
+                type="antdesign"
+                size={32}
                 color="#00aaff"
-                reverse={currentMenu == "CONTACTS"}
               />
           </TouchableOpacity>
         </View>
@@ -396,23 +375,23 @@ function App() {
             </TouchableOpacity>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit(1)}><Text style={xxx.digits}>1</Text></TouchableOpacity>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit(2)}><Text style={xxx.digits}>2</Text></TouchableOpacity>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit(3)}><Text style={xxx.digits}>3</Text></TouchableOpacity>
+            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("1")}><Text style={xxx.digits}>1</Text></TouchableOpacity>
+            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("2")}><Text style={xxx.digits}>2</Text></TouchableOpacity>
+            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("3")}><Text style={xxx.digits}>3</Text></TouchableOpacity>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit(4)}><Text style={xxx.digits}>4</Text></TouchableOpacity>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit(5)}><Text style={xxx.digits}>5</Text></TouchableOpacity>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit(6)}><Text style={xxx.digits}>6</Text></TouchableOpacity>
+            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("4")}><Text style={xxx.digits}>4</Text></TouchableOpacity>
+            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("5")}><Text style={xxx.digits}>5</Text></TouchableOpacity>
+            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("6")}><Text style={xxx.digits}>6</Text></TouchableOpacity>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit(7)}><Text style={xxx.digits}>7</Text></TouchableOpacity>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit(8)}><Text style={xxx.digits}>8</Text></TouchableOpacity>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit(9)}><Text style={xxx.digits}>9</Text></TouchableOpacity>
+            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("7")}><Text style={xxx.digits}>7</Text></TouchableOpacity>
+            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("8")}><Text style={xxx.digits}>8</Text></TouchableOpacity>
+            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("9")}><Text style={xxx.digits}>9</Text></TouchableOpacity>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
             <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit(`*`)}><Text style={xxx.digits}>*</Text></TouchableOpacity>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit(0)}><Text style={xxx.digits}>0</Text></TouchableOpacity>
+            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("0")}><Text style={xxx.digits}>0</Text></TouchableOpacity>
             <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit(`#`)}><Text style={xxx.digits}>#</Text></TouchableOpacity>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "18%"}]}>
@@ -494,7 +473,6 @@ const xxx = StyleSheet.create({
     width: "100%",
     marginHorizontal: "0%",
     paddingHorizontal: 36,
-    paddingVertical: 4,
     flexDirection: "row",
     justifyContent: "space-evenly",
     backgroundColor: "#535A63",
@@ -503,6 +481,12 @@ const xxx = StyleSheet.create({
     borderColor: "#702670",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
+  },
+  menuItems: {
+    width: "20%",
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: "#00aaff",
   },
   searchBarParent: {    
     height: "6%",
