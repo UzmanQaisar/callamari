@@ -5,7 +5,7 @@ import {
   Text,
   Image,
   TextInput,
-  TouchableOpacity,
+  TouchableOpacity as Touch,
   View,
   StyleSheet,
   Linking,
@@ -187,7 +187,7 @@ function App() {
           {previousCallList.map((item, index) => (
             <View key={index} style={xxx.contactEntry} >
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
-                <TouchableOpacity>
+                <Touch>
                   <Icon
                     name="person-outline"
                     type="Ionicons"
@@ -195,16 +195,16 @@ function App() {
                     color="#e7e8ea"
                     solid
                   />
-                </TouchableOpacity>
+                </Touch>
               </View>
               <View style={{ flex: 8, paddingLeft: 6 }}>
-                <TouchableOpacity onPress={() => handleCallThisPerson(item.number, item)}>
+                <Touch onPress={() => handleCallThisPerson(item.number, item)}>
                   <Text style={{ fontSize: 16, color: "#e7e8ea", fontFamily: "whitney-medium" }}>{item.name} </Text>
                   <Text style={{ fontSize: 12, color: "#e7e8ea", fontFamily: "whitney-book" }}>{item.number} </Text>
-                </TouchableOpacity>
+                </Touch>
               </View>
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
-                <TouchableOpacity>
+                <Touch>
                   <Icon
                     name="chevron-right"
                     type="font-awesome-5"
@@ -212,7 +212,7 @@ function App() {
                     color="silver"
                     solid
                   />
-                </TouchableOpacity>
+                </Touch>
               </View>
             </View>
           ))}
@@ -233,7 +233,7 @@ function App() {
               }}
             >
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
-                <TouchableOpacity>
+                <Touch>
                   <Icon
                     name="person"
                     type="Ionicons"
@@ -241,16 +241,16 @@ function App() {
                     color="#e7e8ea"
                     solid
                   />
-                </TouchableOpacity>
+                </Touch>
               </View>
               <View style={{ flex: 8, paddingLeft: 6 }}>
-                <TouchableOpacity onPress={() => handleCallThisPerson(item.number, item)}>
+                <Touch onPress={() => handleCallThisPerson(item.number, item)}>
                   <Text style={{ fontSize: 16, color: "#e7e8ea", fontFamily: "whitney-medium" }}>{item.name} </Text>
                   <Text style={{ fontSize: 12, color: "#e7e8ea", fontFamily: "whitney-book" }}>{item.number} </Text>
-                </TouchableOpacity>
+                </Touch>
               </View>
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
-                <TouchableOpacity>
+                <Touch>
                   <Icon
                     name="chevron-right"
                     type="font-awesome-5"
@@ -258,7 +258,7 @@ function App() {
                     color="silver"
                     solid
                   />
-                </TouchableOpacity>
+                </Touch>
               </View>
             </View>
           )}
@@ -276,7 +276,7 @@ function App() {
               }}
             >
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
-                <TouchableOpacity>
+                <Touch>
                   <Icon
                     name="thumbs-up"
                     type="entypo"
@@ -284,16 +284,16 @@ function App() {
                     color="#e7e8ea"
                     solid
                   />
-                </TouchableOpacity>
+                </Touch>
               </View>
               <View style={{ flex: 8, paddingLeft: 6 }}>
-                <TouchableOpacity onPress={() => handleCallThisPerson(item.number, item)}>
+                <Touch onPress={() => handleCallThisPerson(item.number, item)}>
                   <Text style={{ fontSize: 16, color: "#e7e8ea", fontFamily: "whitney-medium" }}>{item.name} </Text>
                   <Text style={{ fontSize: 12, color: "#e7e8ea", fontFamily: "whitney-book" }}>{item.number} </Text>
-                </TouchableOpacity>
+                </Touch>
               </View>
               <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
-                <TouchableOpacity>
+                <Touch>
                   <Icon
                     name="chevron-right"
                     type="font-awesome-5"
@@ -301,14 +301,14 @@ function App() {
                     color="silver"
                     solid
                   />
-                </TouchableOpacity>
+                </Touch>
               </View>
             </View>
           ))}
         </ScrollView>}
 
         <View style={xxx.menuStyle} >
-          <TouchableOpacity 
+          <Touch 
           onPress={handleCallMenuPress}
           style={[xxx.menuItems, {borderTopWidth: currentMenu === "RECENT" ? 4 : 0}]}>
               <Icon
@@ -317,8 +317,8 @@ function App() {
                 size={28}
                 color="#00aaff"
               />
-          </TouchableOpacity>
-          <TouchableOpacity 
+          </Touch>
+          <Touch 
           onPress={handleLeadsMenuPress}
             style={[xxx.menuItems, {borderTopWidth: currentMenu === "LEADS" ? 4 : 0}]}>      
               <Icon
@@ -327,8 +327,8 @@ function App() {
                 size={28}
                 color="#00aaff"
               />
-          </TouchableOpacity>
-          <TouchableOpacity 
+          </Touch>
+          <Touch 
           onPress={handleContactsMenuPress}
             style={[xxx.menuItems, {borderTopWidth: currentMenu === "CONTACTS" ? 4 : 0}]}>
               <Icon
@@ -337,68 +337,101 @@ function App() {
                 size={32}
                 color="#00aaff"
               />
-          </TouchableOpacity>
+          </Touch>
         </View>
 
         {!dialPad && <View style={[xxx.tacButtons, {bottom: "10%", height: 60, width: 60}]}>
-          <TouchableOpacity style={{height: "100%", width: "100%", alignItems: "center", justifyContent: "center"}}>
+          <Touch style={{height: "100%", width: "100%", alignItems: "center", justifyContent: "center"}}>
             <Image 
             source={require('./assets/callNext.png')} 
             style={{width: 30, height: 30, tintColor: "#00aaff"}}
             resizeMode="contain"
             />
-        </TouchableOpacity>
+        </Touch>
         </View>}
 
         {!dialPad && <View style={[xxx.tacButtons, {bottom: "20%", height: 60, width: 60}]}
         >
-          <TouchableOpacity onPress={() => setDialPad(!dialPad)}>
+          <Touch onPress={() => setDialPad(!dialPad)}>
             <Icon 
               name="dialpad"
               type="Entypo"
               size={36}
               color="#00aaff"
             />
-          </TouchableOpacity>
+          </Touch>
         </View>}
 
         {dialPad && <View style={xxx.dialPadStyle} >
           <View style={xxx.dialStrip}>
-            <TouchableOpacity style={xxx.backSpace}></TouchableOpacity>
+            <Touch style={xxx.backSpace}></Touch>
             <Text style={{fontSize: 30, fontFamily: "whitney-semibold", letterSpacing: 1, flex: 8, textAlign: "center"}}>{dialedNumber}</Text>
-            <TouchableOpacity style={xxx.backSpace} onPress={removeDigits}>
+            <Touch style={xxx.backSpace} onPress={removeDigits}>
               <Icon 
                   name="backspace"
                   type="IonIcons"
                   size={28}
                   color="#2c2d31"
               />
-            </TouchableOpacity>
+            </Touch>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("1")}><Text style={xxx.digits}>1</Text></TouchableOpacity>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("2")}><Text style={xxx.digits}>2</Text></TouchableOpacity>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("3")}><Text style={xxx.digits}>3</Text></TouchableOpacity>
+                        <Touch style={xxx.keypadButton} onPress={() => addDigit("1")}>
+                            <Text style={xxx.digits}>1</Text>
+                        </Touch>
+                        <Touch style={xxx.keypadButton} onPress={() => addDigit("2")}>
+                            <Text style={xxx.digits}>2</Text>
+                            <Text style={xxx.letters}>ABC</Text>
+                        </Touch>
+                        <Touch style={xxx.keypadButton} onPress={() => addDigit("3")}>
+                            <Text style={xxx.digits}>3</Text>
+                            <Text style={xxx.letters}>DEF</Text>
+                        </Touch>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("4")}><Text style={xxx.digits}>4</Text></TouchableOpacity>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("5")}><Text style={xxx.digits}>5</Text></TouchableOpacity>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("6")}><Text style={xxx.digits}>6</Text></TouchableOpacity>
+                        <Touch style={xxx.keypadButton} onPress={() => addDigit("4")}>
+                            <Text style={xxx.digits}>4</Text>
+                            <Text style={xxx.letters}>GHI</Text>
+                        </Touch>
+                        <Touch style={xxx.keypadButton} onPress={() => addDigit("5")}>
+                            <Text style={xxx.digits}>5</Text>
+                            <Text style={xxx.letters}>JKL</Text>
+                        </Touch>
+                        <Touch style={xxx.keypadButton} onPress={() => addDigit("6")}>
+                            <Text style={xxx.digits}>6</Text>
+                            <Text style={xxx.letters}>MNO</Text>
+                        </Touch>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("7")}><Text style={xxx.digits}>7</Text></TouchableOpacity>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("8")}><Text style={xxx.digits}>8</Text></TouchableOpacity>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("9")}><Text style={xxx.digits}>9</Text></TouchableOpacity>
+                        <Touch style={xxx.keypadButton} onPress={() => addDigit("7")}>
+                            <Text style={xxx.digits}>7</Text>
+                            <Text style={xxx.letters}>PQRS</Text>
+                        </Touch>
+                        <Touch style={xxx.keypadButton} onPress={() => addDigit("8")}>
+                            <Text style={xxx.digits}>8</Text>
+                            <Text style={xxx.letters}>TUV</Text>
+                        </Touch>
+                        <Touch style={xxx.keypadButton} onPress={() => addDigit("9")}>
+                            <Text style={xxx.digits}>9</Text>
+                            <Text style={xxx.letters}>WXYZ</Text>
+                        </Touch>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "17%"}]}>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit(`*`)}><Text style={xxx.digits}>*</Text></TouchableOpacity>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit("0")}><Text style={xxx.digits}>0</Text></TouchableOpacity>
-            <TouchableOpacity style={xxx.keypadButton} onPress={() => addDigit(`#`)}><Text style={xxx.digits}>#</Text></TouchableOpacity>
+                        <Touch style={xxx.keypadButton} onPress={() => addDigit(`*`)}>
+                            <Text style={xxx.digits}>*</Text>
+                        </Touch>
+                        <Touch style={xxx.keypadButton} onPress={() => addDigit("0")}>
+                            <Text style={xxx.digits}>0</Text>
+                            <Text style={xxx.letters}>+</Text>
+                        </Touch>
+                        <Touch style={xxx.keypadButton} onPress={() => addDigit(`#`)}>
+                            <Text style={xxx.digits}>#</Text>
+                        </Touch>
           </View>
           <View style={[xxx.dialPadRowStyle, {height: "18%"}]}>
             <View style={xxx.keypadButton}></View>
             <View style={xxx.keypadButton}>
-              <TouchableOpacity onPress={() => handleCallThisPerson(dialedNumber)}>
+              <Touch onPress={() => handleCallThisPerson(dialedNumber)}>
                 <Icon 
                   name="phone"
                   type="MaterialIcons"
@@ -406,10 +439,10 @@ function App() {
                   color="#16a085"
                   reverse
                 />
-              </TouchableOpacity>
+              </Touch>
             </View>
             <View style={xxx.keypadButton}>
-              <TouchableOpacity onPress={() => setDialPad(!dialPad)}>
+              <Touch onPress={() => setDialPad(!dialPad)}>
                 <Icon
                   name="chevron-down"
                   type="font-awesome-5"
@@ -417,7 +450,7 @@ function App() {
                   color="#16a085"
                   solid
                 />
-              </TouchableOpacity>
+              </Touch>
             </View>
           </View>
         </View>}
@@ -433,7 +466,8 @@ const xxx = StyleSheet.create({
     height: "80%",
     width: "32%", 
     alignItems: "center", 
-    justifyContent: "center"
+    justifyContent: "center",
+    flexDirection: "column",
   },
   tacButtons: {    
     position: "absolute", 
@@ -518,9 +552,15 @@ const xxx = StyleSheet.create({
     flex: 2
   },
   digits: {
-    fontSize: 28,
+    fontSize: 32,
     color: "#2c2d31",
     fontFamily: "whitney-semibold"
+  },
+  letters: {
+    fontSize: 14,
+    color: "#2c2d31",
+    fontFamily: "whitney-book",
+    letterSpacing: 1.4,    
   }
 })
 
