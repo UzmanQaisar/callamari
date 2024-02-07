@@ -3,6 +3,7 @@ import { useFonts } from 'expo-font';
 import {
   ScrollView,
   Text,
+  Image,
   TextInput,
   TouchableOpacity,
   View,
@@ -12,6 +13,8 @@ import {
   StatusBar
 } from "react-native";
 import { Icon } from "@rneui/themed";
+
+import callNext from "./assets/callNext.png"
 
 
 const recentList = [
@@ -337,25 +340,23 @@ function App() {
           </TouchableOpacity>
         </View>
 
-        {!dialPad && <View style={[xxx.tacButtons, {bottom: "19%"}]}
-        >
-          <TouchableOpacity>
-            <Icon 
-              name="phone-forwarded"
-              type="MaterialIcons"
-              size={30}
-              color="#00aaff"
+        {!dialPad && <View style={[xxx.tacButtons, {bottom: "10%", height: 60, width: 60}]}>
+          <TouchableOpacity style={{height: "100%", width: "100%", alignItems: "center", justifyContent: "center"}}>
+            <Image 
+            source={require('./assets/callNext.png')} 
+            style={{width: 30, height: 30, tintColor: "#00aaff"}}
+            resizeMode="contain"
             />
-          </TouchableOpacity>
+        </TouchableOpacity>
         </View>}
 
-        {!dialPad && <View style={[xxx.tacButtons, {bottom: "10%"}]}
+        {!dialPad && <View style={[xxx.tacButtons, {bottom: "20%", height: 60, width: 60}]}
         >
           <TouchableOpacity onPress={() => setDialPad(!dialPad)}>
             <Icon 
               name="dialpad"
               type="Entypo"
-              size={30}
+              size={36}
               color="#00aaff"
             />
           </TouchableOpacity>
@@ -443,9 +444,7 @@ const xxx = StyleSheet.create({
     backgroundColor: "#535a63",
     // borderWidth: 2,
     borderColor: "#008cff",
-    borderRadius: 48, 
-    height: 52, 
-    width: 52
+    borderRadius: 24
   },
   dialPadStyle: {    
     position: "absolute", 
