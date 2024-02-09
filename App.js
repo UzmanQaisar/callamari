@@ -108,23 +108,6 @@ function App() {
     }
   };
 
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       console.log("I have only begun");
-  //       const response = await fetch('https://raw.githubusercontent.com/UzmanQaisar/callamari/main/tempServer/myContacts.json');
-  //       const jsonData = await response.json();
-  //       setContactsList(jsonData);
-  //       console.log("I am finished.")
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
   const [fontsLoaded] = useFonts({
     'whitney-light': require('./assets/fonts/whitney-light.otf'),
     'whitney-book': require('./assets/fonts/whitney-book.otf'),
@@ -174,7 +157,7 @@ function App() {
           <TextInput
             style={{
               fontSize: 20,
-              width: "86%",
+              width: "76%",
               color: "#2c2d31",
               fontFamily: "whitney-book"
             }}
@@ -308,36 +291,21 @@ function App() {
         </ScrollView>}
 
         <View style={xxx.menuStyle} >
-          <Touch 
-          onPress={handleCallMenuPress}
-          style={[xxx.menuItems, {borderTopWidth: currentMenu === "RECENT" ? 4 : 0}]}>
-              <Icon
-                name="clock"
-                type="feather"
-                size={28}
-                color="#00aaff"
-              />
-          </Touch>
-          <Touch 
-          onPress={handleLeadsMenuPress}
-            style={[xxx.menuItems, {borderTopWidth: currentMenu === "LEADS" ? 4 : 0}]}>      
-              <Icon
-                name="bookmark"
-                type="fontisto"
-                size={28}
-                color="#00aaff"
-              />
-          </Touch>
-          <Touch 
-          onPress={handleContactsMenuPress}
-            style={[xxx.menuItems, {borderTopWidth: currentMenu === "CONTACTS" ? 4 : 0}]}>
-              <Icon
-                name="contacts"
-                type="antdesign"
-                size={32}
-                color="#00aaff"
-              />
-          </Touch>
+          <View style={[xxx.menuItems, {borderTopWidth: currentMenu === "RECENT" ? 4 : 0}]}>
+                <Touch onPress={handleCallMenuPress} style={xxx.touchInView}>
+                    <Image source={require("./assets/clockColors.png")} style={{width: 36, height: 36}}/>
+                </Touch>
+          </View>
+          <View style={[xxx.menuItems, {borderTopWidth: currentMenu === "LEADS" ? 4 : 0}]}>
+                <Touch onPress={handleLeadsMenuPress} style={xxx.touchInView}>
+                    <Image source={require("./assets/contactNext.png")} style={{width: 36, height: 36}}/>
+                </Touch>
+          </View>
+          <View style={[xxx.menuItems, {borderTopWidth: currentMenu === "CONTACTS" ? 4 : 0}]}>
+                <Touch onPress={handleContactsMenuPress} style={xxx.touchInView}>
+                    <Image source={require("./assets/contacts.png")} style={{width: 36, height: 36}}/>
+                </Touch>
+          </View>
         </View>
 
         {!dialPad && <View style={[xxx.tacButtons, {bottom: "10%", height: 60, width: 60}]}>
@@ -521,13 +489,19 @@ const xxx = StyleSheet.create({
     alignItems: "center",
     borderColor: "#00aaff",
   },
+  touchInView: {
+    height: "100%", 
+    width: "100%", 
+    alignItems: "center", 
+    justifyContent: "center"
+  },
   searchBarParent: {    
     height: "6%",
     width: "80%",
     marginHorizontal: "10%",
     borderWidth: 0,
     borderColor: "#702670",
-    borderRadius: 36,
+    borderRadius: 8,
     flexDirection: "row",
     justifyContent: "center",
     backgroundColor: "#e7e8ea",
