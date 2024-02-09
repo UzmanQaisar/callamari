@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFonts } from 'expo-font';
 import {
   ScrollView,
@@ -13,9 +14,6 @@ import {
   StatusBar
 } from "react-native";
 import { Icon } from "@rneui/themed";
-
-import callNext from "./assets/callNext.png"
-
 
 const recentList = [
     { name: "Ghostbusters", number: "9289287145" },
@@ -107,6 +105,40 @@ function App() {
       .catch((err) => console.error('Error opening phone app:', err))
     }
   };
+
+  const letterToDigit = {
+    "a": 2, "b": 2, "c": 2,
+    "d": 3, "e": 3, "f": 3,
+    "g": 4, "h": 4, "i": 4,
+    "j": 5, "k": 5, "l": 5,
+    "m": 6, "n": 6, "o": 6,
+    "p": 7, "q": 7, "r": 7, "s": 7, 
+    "t": 8, "u": 8, "v": 8,
+    "w": 9, "x": 9, "y": 9, "z": 9
+  }
+
+  function convertNameToNumber(name) {
+    const lowercaseName = name.toLowerCase();
+    let number = '';  
+    for (let i = 0; i < lowercaseName.length; i++) {
+      const char = lowercaseName[i];
+      const digit = letterToDigit[char];
+      if (digit) {
+        number += digit;
+      }
+    }  
+    return number;
+  };
+
+  const contactsWithNumbers = recentList.map(contact => ({
+    ...contact,
+    nameToNumber: convertNameToNumber(contact.name)
+  }));
+  AsyncStorage.setItem('contacts', JSON.stringify(contactsWithNumbers))
+  .then(() => console.log('Contacts saved successfully'))
+  .catch(error => console.error('Error saving contacts:', error));
+
+
 
   const [fontsLoaded] = useFonts({
     'whitney-light': require('./assets/fonts/whitney-light.otf'),
